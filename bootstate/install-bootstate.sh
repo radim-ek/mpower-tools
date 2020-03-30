@@ -27,6 +27,7 @@ if [ ! -f $poststart ]; then
     echo "$poststart not found, creating it ..."
     touch $poststart
     echo "#!/bin/sh" >> $poststart
+    echo "echo 0 > /proc/led/freq" >> $poststart
     chmod 755 $poststart
 fi
 
@@ -40,3 +41,4 @@ fi
 echo "Done!"
 cfgmtd -w -p /etc/
 echo "Adapt your settings in '$config' and call '$applyscript' afterwards."
+

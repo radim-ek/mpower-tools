@@ -42,6 +42,8 @@ export mqtthost
 export refresh
 export tmpfile
 export version
+export discovery
+export discovery_prefix
 # identify type of mpower
 export PORTS=`cat /etc/board.inc | grep board_shortname | sed -e 's/.*\([0-9]\).*/\1/'`
 
