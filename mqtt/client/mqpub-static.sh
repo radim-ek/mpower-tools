@@ -1,8 +1,9 @@
 #!/bin/sh
 # homie spec (incomplete)
-$PUBBIN -h $mqtthost $auth -t $topic/\$homie -m "2.1.0" -r
+$PUBBIN -h $mqtthost $auth -t $topic/\$homie -m "3.0.0" -r
 $PUBBIN -h $mqtthost $auth -t $topic/\$name -m "$devicename" -r
 $PUBBIN -h $mqtthost $auth -t $topic/\$fw/version -m "$version" -r
+
 
 $PUBBIN -h $mqtthost $auth -t $topic/\$fw/name -m "mPower MQTT" -r
 
@@ -14,6 +15,8 @@ $PUBBIN -h $mqtthost $auth -t $topic/\$nodes -m "$NODES" -r
 
 UPTIME=`awk '{print $1}' /proc/uptime`
 $PUBBIN -h $mqtthost $auth -t $topic/\$stats/uptime -m "$UPTIME" -r
+
+$PUBBIN -h $mqtthost $auth -t $topic/\$state -m "ready" -r
 
 properties=relay
 
@@ -43,6 +46,7 @@ do
     $PUBBIN -h $mqtthost $auth -t $topic/port$i/\$type -m "power switch" -r
     $PUBBIN -h $mqtthost $auth -t $topic/port$i/\$properties -m "$properties" -r
     $PUBBIN -h $mqtthost $auth -t $topic/port$i/relay/\$settable -m "true" -r
+    $PUBBIN -h $mqtthost $auth -t $topic/port$i/relay/\$datatype -m "integer" -r
 done
 
 if [ $lock -eq 1 ]
