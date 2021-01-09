@@ -2,7 +2,7 @@
 
 LOCALDIR="/var/etc/persistent/mqtt"
 LOCALSCRIPTDIR=$LOCALDIR/client
-BASEURL="https://raw.githubusercontent.com/radim-ek/mpower-tools/tree/HomeAssistant_master/mqtt"
+BASEURL="https://raw.githubusercontent.com/radim-ek/mpower-tools/HomeAssistant_master/mqtt"
 
 echo "Installing mPower MQTT v2 ..."
 wget --no-check-certificate -q $BASEURL/libmosquitto.so.1?raw=true -O $LOCALDIR/libmosquitto.so.1
